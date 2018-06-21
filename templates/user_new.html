@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Create your user profile</h2>
+<form action="{{ url_for('user_create')}}" method="POST">
+  <div>
+    <label for="nameuser">First Name</label>
+   <input type="text" name="first_name" id="nameuser">
+   <label for="lastname-user">Last Name</label>
+   <input type="text" name="last_name" id="lastname-user">
+   <label for="imageuser">Avatar</label>
+   <input type="text" name="image" id="imageuser">
+  </div>
+  <div>
+    <input type="submit" value="Add User">
+  </div>  
+</form>
+{% endblock %}

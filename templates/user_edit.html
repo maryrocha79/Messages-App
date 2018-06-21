@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Update your profile</h2>
+<form action="{{ url_for('user_edit', user_id = user.id) }}?_method=PATCH" method="POST">
+  <div>
+    <label for="nameuser">Your Name</label>
+    <input type="text" name="first_name" id="nameuser" value="{{ user.first_name}}">
+  </div>
+  <div>
+      <label for="lastname-user">Your Name</label>
+      <input type="text" name="last_name" id="lastname-user" value="{{ user.last_name}}">
+    </div>
+  <div>
+    <label for="imguser">Update your Picture</label>
+     <input type="url" name="image" id="imguser">
+  </div>
+  <div>
+    <input type="submit" value="Update User">
+  </div>  
+</form>
+{% endblock %}

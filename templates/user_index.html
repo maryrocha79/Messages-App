@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Users List</h3>
+<div><a href="{{url_for('user_new')}}">Add User</a></div>
+<ul>
+{% for user in users %}
+<li><a href="{{url_for('user_show', user_id = user.id)}}">{{ user.first_name }} {{ user.last_name }}</a></li>
+{% endfor%}
+</ul>
+{% endblock %}

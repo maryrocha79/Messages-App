@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Messages for {{ user.name }}</h3>
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Message Content</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+      {% for msg in user.messages %}
+    <tr>
+      <td>{{msg.msg_content }}</td>
+      <td>
+        <form action="{{url_for('msg_delete', msg_id = msg.id)}}?_method=DELETE" method="post">
+          <input type="submit" value="DELETE MESSAGE">
+        </form>
+      </td>
+      <td> <a href="{{url_for('msg_edit_form', msg_id = msg.id)}}">EDIT MSG</a></td>
+    </tr>
+    {% endfor%}
+  </tbody>
+</table>
+<a href="{{ url_for('user_show', user_id = user.id)}}"> Back to your profile</a>
+
+{% endblock %}

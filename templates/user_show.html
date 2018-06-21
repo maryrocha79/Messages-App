@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>User profile</h2>
+
+<h3>{{ user.first_name }} {{ user.last_name }}</h3>
+<img src="{{user.image}}" alt="">
+<div><a href="{{url_for('index_messages', user_id = user.id)}}"> Go to your messages</a></div>
+<div><a href="{{ url_for('user_edit_form',user_id = user.id)}}">Edit User</a></div>
+<form action="{{ url_for('user_delete', user_id = user.id)}}?_method=DELETE" method="post">
+  <button type="submit">Delete User</button>
+</form>
+
+<ul>
+  {% for msg in messages %}
+  <li><a href=""></a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

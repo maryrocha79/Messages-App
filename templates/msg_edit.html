@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>What do you want to change?</h2>
+<form action="{{ url_for('msg_edit', msg_id= found_msg.id)}}?_method=PATCH" method="POST">
+  <div>
+    <label for="msguser">Your Message</label>
+   <input type="text" name="msg_content" id="msguser" value={{found_msg.msg_content}}>
+  </div>
+  <!-- <div>
+      <label for="imguser">image</label>
+     <input type="url" name="image" id="imguser">
+    </div> -->
+    <div>
+     <input type="submit" value="Add Message">
+      </div>  
+</form>
+{% endblock %}
