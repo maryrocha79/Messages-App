@@ -16,7 +16,7 @@
               value="{{ message.id }}"
               id="message_{{ message.id }}"
               name="messages"
-              {% if message in tag.messages %}
+              {% if message in found_tag.messages %}
                 checked
               {% endif %}
             >
@@ -26,11 +26,7 @@
           </div>
         {% endfor %}
       </div>
-
-
-
-
-    <input type="submit" value="Add Tag">
+    <input type="submit" value="Update Tag" class="btn btn-primary btn-sm">
   </form>
 </div>
 

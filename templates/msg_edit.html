@@ -7,7 +7,6 @@
     <label for="msguser">Your Message</label>
    <input type="text" name="content" id="msguser" value={{found_msg.content}}>
   </div>
-
   <div class="form-check">
       <p>Tags</p>
       {% for tag in tags %}
@@ -18,22 +17,17 @@
             value="{{ tag.id }}"
             id="tag_{{ tag.id }}"
             name="tags"
-            {% if tag in message.tags %}
+            {% if tag in found_msg.tags %}
               checked
-            {% endif %}
-          >
+            {% endif %}>
           <label class="form-check-label" for="tag_{{ tag.id }}">
             <p class="badge badge-pill badge-warning">{{ tag.name }}</p>
           </label>
         </div>
       {% endfor %}
     </div>
-
-
-
-
   <div>
-    <input type="submit" value="Update Message">
+    <input type="submit" value="Update Message" class="btn btn-primary btn-sm">
   </div>  
 </form>
 {% endblock %}

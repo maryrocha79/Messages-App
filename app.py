@@ -214,7 +214,7 @@ def tag_create():
 @app.route('/tags/<int:tag_id>', methods=['GET'])
 def tag_show(tag_id):
     found_tag = Tag.query.get_or_404(tag_id)
-    return render_template('msg_show.html', found_tag=found_tag)
+    return render_template('tags_show.html', found_tag=found_tag)
 
 
 @app.route('/tags/<int:tag_id>', methods=['DELETE'])

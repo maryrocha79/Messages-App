@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 <h3>Tags</h3>
-<a href="{{url_for('tag_new_form')}}">Add a Tag</a>
+<a href="{{url_for('tag_new_form')}}" class="btn btn-primary btn-sm">New Tag</a>
 <ul>
   {% for tag in tags %}
-  <li style="display:flex;justify-content:space-evenly;padding-bottom: 2%"><span>{{ tag.name}}</span>
+  <li style="display:flex;justify-content:space-evenly;padding-bottom: 2%">
+    <span>{{ tag.name}}</span>
     <form action="{{url_for('tag_delete', tag_id = tag.id)}}?_method=DELETE" method="post">
       <button type="submit" class="btn btn-danger btn-sm">Delete Tag</button>
     </form>
-    <a href="{{url_for('tag_edit_form', tag_id = tag.id)}}"><button type="button" class="btn btn-info disabled btn-sm">Edit Tag</button></a>
+    <a href="{{url_for('tag_edit_form', tag_id = tag.id)}}" class="btn btn-success  btn-sm">Edit Tag</a>
+    <a href="{{url_for('tag_show', tag_id = tag.id)}}" class="btn btn-info  btn-sm">Show Tag</a>
   </li>
   {% endfor %}
 </ul>

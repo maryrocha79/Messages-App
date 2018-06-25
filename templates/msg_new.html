@@ -7,7 +7,6 @@
     <label for="msguser">Your Message</label>
    <input type="text" name="content" id="msguser">
   </div>
-  
   <div class="form-check">
       <p>Tags</p>
       {% for tag in tags %}
@@ -19,8 +18,6 @@
         </div>
       {% endfor %}
     </div>
-
-
   <div>
     <input type="submit" value="Add Message">
   </div>  
@@ -28,8 +25,3 @@
 {% endblock %}
 
 
-<!-- <select name="tag" id="">
-    {% for tag in tags%}
-    <option value="tag.name">{{ tag.tag_name }}</option>
-    {% endfor %}
-  </select> -->

@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Create your user profile</h3>
+<h3>Create your profile</h3>
+<div class="form-group row">
 <form action="{{ url_for('user_create')}}" method="POST">
   <div>
     <label for="nameuser">First Name</label>
    <input type="text" name="first_name" id="nameuser">
    <label for="lastname-user">Last Name</label>
    <input type="text" name="last_name" id="lastname-user">
-   <label for="imageuser">Avatar</label>
+   <label for="imageuser">Picture</label>
    <input type="text" name="image" id="imageuser">
   </div>
   <div>
-    <button type="submit" class="btn btn-primary disabled">Add User</button>
+    <button type="submit" class="btn btn-primary btn-sm">Add User</button>
   </div>  
 </form>
+</div>
 {% endblock %}

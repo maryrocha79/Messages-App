@@ -1,36 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-
-<h3>Messages for {{ user.first_name }} {{user.last_name}}</h3>
-
-
+<div class="d-flex justify-content-between align-items-center">
+  <h3>Messages for {{ user.first_name }} {{user.last_name}}</h3>
+  <a href="{{url_for('msg_new',user_id = user.id)}}" class="btn btn-primary btn-sm">New Message</a>
+  <a href="{{ url_for('user_show', user_id = user.id)}}" class="btn btn-primary btn-sm"> Back to your profile</a>
+</div>
 <table>
   <thead>
     <tr>
-      <td><a href="{{url_for('msg_new',user_id = user.id)}}">New Message</a></td>
+      <th>Message</th>
+      <th>Tag Count</th>
+      <th class="text-center">Actions</th>
     </tr>
   </thead>
   <tbody >
       {% for msg in user.messages %}
     <tr>
       <td>{{msg.content }}</td>
-      <td>Tag count: {{ msg.tags.count()}}</td>
+      <td>{{ msg.tags.count()}} tags</td>
       <td>
-        <form action="{{url_for('msg_delete', msg_id = msg.id)}}?_method=DELETE" method="post">
-         
-          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-        </form>
+        <a href="{{url_for('msg_edit_form', msg_id = msg.id)}}" class="btn btn-success btn-sm">EDIT MSG</a>
+        <a href="{{ url_for('msg_show', msg_id = msg.id)}}" class="btn btn-info btn-sm">Show Msg</a>
+        <form action="{{url_for('msg_delete', msg_id = msg.id)}}?_method=DELETE" method="post" style="display: inline;">
+            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+          </form>
       </td>
-      <td> <a href="{{url_for('msg_edit_form', msg_id = msg.id)}}" class="btn btn-danger btn-sm">EDIT MSG</a></td>
     </tr>
     {% endfor%}
   </tbody>
 </table>
-<a href="{{ url_for('user_show', user_id = user.id)}}"> Back to your profile</a>
-
-
 {% endblock %}
 
 
