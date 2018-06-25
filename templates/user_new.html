@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Create your user profile</h2>
+<h3>Create your user profile</h3>
 <form action="{{ url_for('user_create')}}" method="POST">
   <div>
     <label for="nameuser">First Name</label>
@@ -12,7 +12,7 @@
    <input type="text" name="image" id="imageuser">
   </div>
   <div>
-    <input type="submit" value="Add User">
+    <button type="submit" class="btn btn-primary disabled">Add User</button>
   </div>  
 </form>
 {% endblock %}

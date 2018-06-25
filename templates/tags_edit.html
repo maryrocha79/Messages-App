@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Update this tag</h3>
+<div>
+  <form action="{{url_for('tag_edit',tag_id = found_tag.id)}}?_method=PATCH" method="POST">
+    <label for="tagname">Update Tag</label>
+    <input type="text" name="name" value="{{found_tag.name}}" id="tagname">
+
+    <div class="form-check">
+        <p>Messages</p>
+        {% for message in messages %}
+          <div>
+            <input 
+              class="form-check-input"
+              type="checkbox"
+              value="{{ message.id }}"
+              id="message_{{ message.id }}"
+              name="messages"
+              {% if message in tag.messages %}
+                checked
+              {% endif %}
+            >
+            <label class="form-check-label" for="message_{{ message.id }}">
+              "{{ message.content }}" - <small>{{ message.user.first_name }} {{ message.user.last_name }}</small>
+            </label>
+          </div>
+        {% endfor %}
+      </div>
+
+
+
+
+    <input type="submit" value="Add Tag">
+  </form>
+</div>
+
+{% endblock%}

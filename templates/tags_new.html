@@ -3,8 +3,19 @@
 <h3>Create a new Tag</h3>
 <div>
   <form action="{{url_for('tag_create')}}" method="POST">
-    <label for="tagname">Add Tag</label>
-    <input type="text" name="tag_name" id="tagname">
+    <label for="tagname">Tag name:</label>
+    <input type="text" name="name" id="tagname">
+    <div class="form-check">
+        <p>Messages</p>
+        {% for message in messages %}
+          <div>
+            <input class="form-check-input" type="checkbox" value="{{ message.id }}" id="message_{{ message.id }}" name="messages">
+            <label class="form-check-label" for="message_{{ message.id }}">
+              "{{ message.content }}" - <small>{{ message.user.first_name }} {{ message.user.last_name }}</small>
+            </label>
+          </div>
+        {% endfor %}
+      </div>
     <input type="submit" value="Add Tag">
   </form>
 </div>

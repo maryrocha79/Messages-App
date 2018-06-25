@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="jumbotron">
+    <h4 class="display-4">
+      {{found_msg.content}}
+    </h4>
+    <p class="d-flex justify-content-end"><em>- {{ found_msg.user.first_name }} {{ found_msg.user.last_name }}</em></p>
+    <div class="d-flex justify-content-end">
+      {% for tag in found_msg.tags %}
+        <a href="{{ url_for('tags_show', tag_id=tag.id) }}" class="badge badge-pill badge-warning ml-2">{{ tag.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,19 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>User profile</h2>
+<div class="card mb-3" style="max-width: 25rem;">
+  <h3 class="card-header">{{ user.first_name }} {{ user.last_name }}</h3>
+  <img style="height: 200px; width: 100%; display: block;" src="{{user.image}}" alt="Card image">
+  <div class="card-body">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <a href="{{url_for('index_messages', user_id = user.id)}}" class="card-link"><button type="button" class="btn btn-primary disabled">Messages</button></a>
+      <a href="{{ url_for('user_edit_form',user_id = user.id)}}" class="card-link"><button type="button" class="btn btn-info disabled">Edit</button></a>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    <form action="{{ url_for('user_delete', user_id = user.id)}}?_method=DELETE" method="post">
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+</div>
 
-<h3>{{ user.first_name }} {{ user.last_name }}</h3>
-<img src="{{user.image}}" alt="">
-<div><a href="{{url_for('index_messages', user_id = user.id)}}"> Go to your messages</a></div>
-<div><a href="{{ url_for('user_edit_form',user_id = user.id)}}">Edit User</a></div>
-<form action="{{ url_for('user_delete', user_id = user.id)}}?_method=DELETE" method="post">
-  <button type="submit">Delete User</button>
-</form>
-
-<ul>
-  {% for msg in messages %}
-  <li><a href=""></a></li>
-  {% endfor %}
-</ul>
 {% endblock %}
+
+
+
+
+<!-- <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+<img src="{{user.image}}" alt="">
+<div><a href="{{url_for('index_messages', user_id = user.id)}}"><button type="button" class="btn btn-primary disabled">Go to your messages</button></a></div>
+<div><a href="{{ url_for('user_edit_form',user_id = user.id)}}"><button type="button" class="btn btn-info disabled">Edit User</button></a></div>
+<form action="{{ url_for('user_delete', user_id = user.id)}}?_method=DELETE" method="post">
+  <button type="submit" class="btn btn-danger">Delete User</button>
+</form> -->

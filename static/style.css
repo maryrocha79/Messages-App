@@ -1,0 +1,47 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+  margin: 10%;
+}
+
+li {
+  display: flex;
+}
+
+img {
+  width: 20%;
+  height: 30%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+.bar {
+  color: white;
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: black;
+  padding: 20px;
+}
+
+.bar-2 .username {
+  order: 2;
+}
+.bar-2 .icon-3 {
+  order: 3;
+}
+
+.bar-3 .username {
+  order: -1;
+}

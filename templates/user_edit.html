@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Update your profile</h2>
+<h3>Update your profile</h3>
 <form action="{{ url_for('user_edit', user_id = user.id) }}?_method=PATCH" method="POST">
   <div>
     <label for="nameuser">Your Name</label>

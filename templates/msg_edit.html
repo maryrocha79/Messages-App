@@ -1,18 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>What do you want to change?</h2>
+<h3>What do you want to change?</h3>
 <form action="{{ url_for('msg_edit', msg_id= found_msg.id)}}?_method=PATCH" method="POST">
   <div>
     <label for="msguser">Your Message</label>
-   <input type="text" name="msg_content" id="msguser" value={{found_msg.msg_content}}>
+   <input type="text" name="content" id="msguser" value={{found_msg.content}}>
   </div>
-  <!-- <div>
-      <label for="imguser">image</label>
-     <input type="url" name="image" id="imguser">
-    </div> -->
-    <div>
-     <input type="submit" value="Add Message">
-      </div>  
+
+  <div class="form-check">
+      <p>Tags</p>
+      {% for tag in tags %}
+        <div>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="{{ tag.id }}"
+            id="tag_{{ tag.id }}"
+            name="tags"
+            {% if tag in message.tags %}
+              checked
+            {% endif %}
+          >
+          <label class="form-check-label" for="tag_{{ tag.id }}">
+            <p class="badge badge-pill badge-warning">{{ tag.name }}</p>
+          </label>
+        </div>
+      {% endfor %}
+    </div>
+
+
+
+
+  <div>
+    <input type="submit" value="Update Message">
+  </div>  
 </form>
 {% endblock %}
