@@ -102,7 +102,7 @@ def user_delete(user_id):
 @app.route('/users/<int:user_id>/edit', methods=['GET'])
 def user_edit_form(user_id):
     """Show the edit user form."""
-    found_user = User.query.get(user_id)
+    found_user = User.query.get_or_404(user_id)
     return render_template('user_edit.html', user=found_user)
 
 

@@ -2,15 +2,26 @@
 
 {% block content %}
 
-<h3>Users List</h3>
+<!-- <h3>Users List</h3> -->
 <div>
 <a href="{{url_for('user_new')}}" class="btn btn-primary btn-sm">New User</a>
 </div>
-<ul class="list-group">
-{% for user in users %}
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    <a href="{{url_for('user_show', user_id = user.id)}}">{{ user.first_name }} {{ user.last_name }}</a>
-  </li>
-{% endfor%}
-</ul>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">User</th>
+        <th>Go to</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+      <tr>
+        <th scope="row">{{ user.first_name }} {{ user.last_name }}</th>
+        <td>
+          <a href="{{url_for('user_show', user_id = user.id)}}">Profile</a>
+        </td>
+      </tr>
+      {% endfor%}
+    </tbody>
+  </table>
 {% endblock %}
