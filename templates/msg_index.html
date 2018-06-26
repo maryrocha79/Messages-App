@@ -22,7 +22,7 @@
         <a href="">{{ tag.name }}</a>
             {% endfor %}
       </td>
-      <td>
+      <td style="display:flex;justify-content:space-evenly">
         <a href="{{url_for('msg_edit_form', msg_id = msg.id)}}" class="btn btn-success btn-sm">EDIT MSG</a>
         <a href="{{ url_for('msg_show', msg_id = msg.id)}}" class="btn btn-info btn-sm">Show Msg</a>
         <form action="{{url_for('msg_delete', msg_id = msg.id)}}?_method=DELETE" method="post" style="display: inline;">
