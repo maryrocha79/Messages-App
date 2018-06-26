@@ -151,6 +151,7 @@ def msg_create(user_id):
 
 @app.route('/messages/<int:msg_id>', methods=['GET'])
 def msg_show(msg_id):
+    """Shows one messages and its tags"""
     found_msg = Message.query.get_or_404(msg_id)
     return render_template('msg_show.html', found_msg=found_msg)
 
@@ -191,18 +192,21 @@ def msg_edit(msg_id):
 
 @app.route('/tags', methods=['GET'])
 def tag_index():
+    """Shows the list of tags"""
     tags = Tag.query.all()
     return render_template('tags_index.html', tags=tags)
 
 
 @app.route('/tags/new', methods=['GET'])
 def tag_new_form():
+    """ Shows the form to add a new tag"""
     messages = Message.query.all()
     return render_template('tags_new.html', messages=messages)
 
 
 @app.route('/tags/new', methods=['POST'])
 def tag_create():
+    """ Handle adding a new tag"""
     new_tag = Tag(name=request.form['name'])
     message_ids = [int(num) for num in request.form.getlist('messages')]
     new_tag.messages = Message.query.filter(Message.id.in_(message_ids))
@@ -213,12 +217,14 @@ def tag_create():
 
 @app.route('/tags/<int:tag_id>', methods=['GET'])
 def tag_show(tag_id):
+    """Shows one tag and the messages associated with it """
     found_tag = Tag.query.get_or_404(tag_id)
     return render_template('tags_show.html', found_tag=found_tag)
 
 
 @app.route('/tags/<int:tag_id>', methods=['DELETE'])
 def tag_delete(tag_id):
+    """Handle deleting one tag"""
     found_tag = Tag.query.get(tag_id)
     db.session.delete(found_tag)
     db.session.commit()
@@ -227,6 +233,7 @@ def tag_delete(tag_id):
 
 @app.route('/tags/<int:tag_id>/edit', methods=['GET'])
 def tag_edit_form(tag_id):
+    """Shows the for to add a new tag"""
     found_tag = Tag.query.get_or_404(tag_id)
     messages = Message.query.all()
     return render_template(
@@ -235,6 +242,7 @@ def tag_edit_form(tag_id):
 
 @app.route('/tags/<int:tag_id>', methods=['PATCH'])
 def tag_edit(tag_id):
+    """Handle editing one tag"""
     found_tag = Tag.query.get_or_404(tag_id)
     found_tag.name = request.form['name']
     message_ids = [int(num) for num in request.form.getlist('messages')]
